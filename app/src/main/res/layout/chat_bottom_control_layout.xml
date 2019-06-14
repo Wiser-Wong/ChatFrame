@@ -9,16 +9,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/iv_voice_keyboard_control"
+        <FrameLayout
+            android:id="@+id/fl_voice_keyboard_control"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/chat_voice_sl" />
+            android:layout_margin="5dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_voice_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@drawable/chat_voice_sl" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_voice_keyboard_control"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="@drawable/chat_keyboard_sl"
+                android:visibility="gone" />
+
+        </FrameLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -26,10 +41,11 @@
             android:layout_margin="5dp"
             android:layout_toStartOf="@+id/ll_end_control"
             android:layout_toLeftOf="@+id/ll_end_control"
-            android:layout_toEndOf="@+id/iv_voice_keyboard_control"
-            android:layout_toRightOf="@+id/iv_voice_keyboard_control">
+            android:layout_toEndOf="@+id/fl_voice_keyboard_control"
+            android:layout_toRightOf="@+id/fl_voice_keyboard_control">
 
             <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_chat_message"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/chat_input_bg"
@@ -37,6 +53,7 @@
                 android:padding="10dp" />
 
             <Button
+                android:id="@+id/btn_speak"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="按住 说话"
@@ -54,14 +71,30 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatImageView
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/chat_face_sl" />
+                android:layout_margin="5dp">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_face_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/chat_face_sl" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_face_keyboard_control"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/chat_keyboard_sl"
+                    android:visibility="gone" />
+
+            </FrameLayout>
 
             <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_more_control"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -72,15 +105,9 @@
 
     </RelativeLayout>
 
-    <FrameLayout
+    <com.wiser.chatframe.chatview.ChatFunctionLayout
+        android:id="@+id/chat_function_layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:visibility="gone">
-
-        <include layout="@layout/chat_face_layout" />
-
-        <include layout="@layout/chat_more_layout" />
-
-    </FrameLayout>
-
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 </LinearLayout>
