@@ -1,2 +1,2 @@
 # ChatFrame
-聊天框架
+聊天UI组件
